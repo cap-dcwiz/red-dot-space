@@ -1,0 +1,22 @@
+node_modules/
+dist/
+
+.DS_Store
+.idea/
+.claude/
+
+*.log
+
+# Local office temp files
+~$*.pptx
+
+# Generated deliverables
+*.pptx
+*.pdf
+
+# Optional local/reference workspaces
+pptx-edit/
+review-export/
+website-update/
+website-update.zip
+scripts/
