@@ -16,7 +16,7 @@
   --color-sky-soft: rgba(122, 166, 255, 0.14);
   --color-sky-line: rgba(122, 166, 255, 0.3);
   --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.35);
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
 
@@ -150,7 +150,7 @@ select {
 
 .wordmark {
   text-decoration: none;
-  font-family: var(--font-display);
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.85rem;
   letter-spacing: 0.18em;
   white-space: nowrap;
@@ -318,7 +318,6 @@ select {
 
 .hero-copy h1,
 .section-heading h2,
-.position-intro h2,
 .contact-panel h2 {
   margin: 0;
   font-family: var(--font-display);
@@ -337,7 +336,6 @@ select {
 
 .hero-body,
 .section-heading p,
-.position-intro p,
 .contact-panel p,
 .info-card p,
 .timeline-card p,
@@ -397,6 +395,10 @@ select {
   align-items: center;
   justify-content: center;
   transform: translateX(56px);
+}
+
+.hero-visual-horizon {
+  min-height: 520px;
 }
 
 .hero-cloud,
@@ -467,6 +469,106 @@ select {
   border-radius: 50%;
   background: var(--color-accent);
   box-shadow: 0 0 18px rgba(212, 33, 40, 0.45);
+}
+
+.hero-horizon-glow,
+.hero-horizon-curve,
+.hero-satellite-cluster,
+.hero-satellite-body,
+.hero-solar,
+.hero-satellite-node,
+.hero-signal-dash {
+  position: absolute;
+}
+
+.hero-horizon-glow {
+  width: 640px;
+  height: 220px;
+  right: -2%;
+  bottom: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 166, 255, 0.22), rgba(122, 166, 255, 0.08) 46%, transparent 74%);
+  filter: blur(26px);
+}
+
+.hero-horizon-curve {
+  right: -10%;
+  bottom: -18%;
+  border-radius: 50%;
+  border-top: 1px solid rgba(122, 166, 255, 0.24);
+}
+
+.hero-horizon-curve-1 {
+  width: 760px;
+  height: 280px;
+}
+
+.hero-horizon-curve-2 {
+  width: 620px;
+  height: 220px;
+  right: 2%;
+  bottom: -10%;
+  border-top-color: rgba(122, 166, 255, 0.12);
+}
+
+.hero-satellite-cluster {
+  right: 18%;
+  top: 26%;
+  width: 180px;
+  height: 180px;
+  transform: translate(calc(var(--hero-shift-x) * 0.55), calc(var(--hero-shift-y) * 0.55));
+}
+
+.hero-satellite-body {
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  border-radius: 14px;
+  border: 1px solid rgba(122, 166, 255, 0.24);
+  background: linear-gradient(180deg, rgba(122, 166, 255, 0.1), rgba(122, 166, 255, 0.02));
+  box-shadow: inset 0 0 18px rgba(122, 166, 255, 0.12);
+}
+
+.hero-solar {
+  top: 50%;
+  width: 54px;
+  height: 28px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(122, 166, 255, 0.22);
+  background: repeating-linear-gradient(90deg, rgba(122, 166, 255, 0.32) 0 8px, rgba(122, 166, 255, 0.08) 8px 10px);
+}
+
+.hero-solar-left { left: 8px; }
+.hero-solar-right { right: 8px; }
+
+.hero-satellite-node {
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 16px rgba(212, 33, 40, 0.42);
+}
+
+.hero-signal-dash {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(122, 166, 255, 0.3), transparent);
+}
+
+.hero-signal-dash-1 {
+  right: 10%;
+  top: 22%;
+  width: 120px;
+}
+
+.hero-signal-dash-2 {
+  right: 4%;
+  bottom: 18%;
+  width: 140px;
 }
 
 .planet-glow {
@@ -1299,7 +1401,7 @@ select {
 .timeline-metric,
 .position-number {
   font-family: var(--font-display);
-  color: var(--color-accent);
+  color: var(--color-sky);
 }
 
 .metric {
@@ -1421,6 +1523,91 @@ select {
   min-height: 238px;
 }
 
+.mission-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.perspective-layout {
+  display: grid;
+  gap: 18px;
+  margin-top: 38px;
+}
+
+.perspective-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.perspective-featured,
+.perspective-card {
+  height: 100%;
+}
+
+.perspective-featured {
+  padding: 26px 28px;
+  border-radius: 26px;
+}
+
+.perspective-featured h3,
+.perspective-card h3 {
+  margin: 14px 0 0;
+}
+
+.perspective-featured h3 {
+  font-size: 1.9rem;
+  line-height: 1.12;
+}
+
+.perspective-card h3 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.perspective-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.perspective-date {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.perspective-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.perspective-muted {
+  margin-top: 18px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.perspective-footer-note {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(122, 166, 255, 0.04);
+  border: 1px solid rgba(163, 189, 255, 0.1);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.perspective-footer-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+
 .contact-section {
   padding-bottom: 72px;
 }
@@ -1537,12 +1724,19 @@ select {
   }
 
   .hero-starfield,
-  .hero-side-signal {
+  .hero-side-signal,
+  .hero-signal-dash {
     display: none;
   }
 
   .build-rail {
     display: none;
+  }
+
+  .mission-grid,
+  .perspective-layout,
+  .perspective-grid {
+    grid-template-columns: 1fr;
   }
 
   .position-intro {
@@ -1658,6 +1852,18 @@ select {
   .hero-visual {
     min-height: 380px;
     overflow: hidden;
+  }
+
+  .hero-satellite-cluster {
+    right: 16%;
+    top: 32%;
+    width: 146px;
+    height: 146px;
+  }
+
+  .hero-horizon-glow {
+    width: 480px;
+    height: 170px;
   }
 
   .why-us-grid {
