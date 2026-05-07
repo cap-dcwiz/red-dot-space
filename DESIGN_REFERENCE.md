@@ -65,12 +65,12 @@ Within accents:
 
 | Role | Font | Weight | Notes |
 |---|---|---|---|
-| Wordmark | Space Grotesk | 700 Bold | Uppercase, tracked, stable |
-| Hero / display headings | Space Grotesk | 700 Bold | Tight letter-spacing (`-0.04em`) |
-| Section headings | Space Grotesk | 700 Bold | Same family, less branded treatment |
-| Eyebrows / labels | Space Grotesk | 500 | Uppercase, `0.18em`–`0.2em` tracking |
-| Body copy | Inter | 400 Regular | ~`1.7` line-height |
-| Metrics / numbers | Space Grotesk | 700 Bold | Used for key callouts only |
+| Wordmark asset | Space Grotesk | 700 Bold | Use as an outlined/exported logo asset, not live PPT text |
+| Website display headings | Space Grotesk | 700 Bold | Keep for website and exported brand materials |
+| Editable client deck headings | Aptos | 600 Semibold | Safer Office default for portability |
+| Eyebrows / labels | Aptos | 600 Semibold | Uppercase, `0.14em`–`0.18em` tracking |
+| Body copy | Aptos / Inter | 400 Regular | Use Aptos for editable decks, Inter for web/exported materials |
+| Metrics / numbers | Aptos | 600 Semibold | Keep clean and portable in client-facing decks |
 
 ### Wordmark Guidance
 
@@ -80,11 +80,25 @@ For v1, the site is **wordmark-first**:
 - same display family as the site is acceptable for now
 - treatment should still feel more controlled than general headings
 
+Portability rule:
+- do not rebuild the logo as live PowerPoint text
+- export the approved wordmark as SVG/PNG and place it as artwork
+- keep editable presentation typography separate from the brand wordmark
+
 Recommended treatment:
 - uppercase
 - consistent tracking
 - no decorative effects
 - no green glow
+
+Why not use Space Grotesk everywhere:
+- Space Grotesk is a strong, modern, and fairly common startup/product font
+- that makes it credible and easy to recommend, but not especially ownable by itself
+- it is best used as part of the brand system for web/exported materials, not as the only editable font inside client PowerPoint files
+
+Working recommendation:
+- Website + exported brand materials: Space Grotesk + Inter
+- Editable client PPT files: Aptos for headings/body, approved logo inserted as artwork
 
 Google Fonts:
 - Space Grotesk: https://fonts.google.com/specimen/Space+Grotesk
