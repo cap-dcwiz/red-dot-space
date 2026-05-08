@@ -1,83 +1,115 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Calendar, FileText, Layers3, Menu, Newspaper, Orbit, Shield, X, Zap } from 'lucide-react'
+import { ArrowRight, FileText, Layers3, Menu, Shield, X, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
 
 const navLinks = [
   { href: '#mission', label: 'Mission' },
-  { href: '#product', label: 'Our Product' },
-  { href: '#why-us', label: 'Why Us' },
+  { href: '#platform', label: 'Platform' },
+  { href: '#why-red-dot', label: 'Why Red Dot' },
   { href: '#perspective', label: 'Perspective' },
   { href: '#contact', label: 'Contact' },
 ]
 
-const missionPillars = [
+const positioningCards = [
   {
     icon: Zap,
-    label: 'Power',
-    title: 'Infrastructure beyond the grid',
-    text: 'Space-native compute opens up a different energy and thermal model from conventional terrestrial facilities.',
+    title: 'Operations intelligence, engineered for orbit.',
+    text: 'We apply experience from data center thermal and energy optimization to the design of orbital compute payloads and operations intelligence. The goal is to make space-based compute more reliable, observable, and efficient.',
   },
   {
-    icon: Orbit,
-    label: 'Reach',
-    title: 'Processing closer to the source',
-    text: 'Orbital infrastructure can reduce unnecessary round-trips to the ground and create new routing possibilities.',
+    icon: Layers3,
+    title: 'A managed cloud layer across orbital capacity.',
+    text: 'Red Dot Space is developing a managed service layer that can aggregate compute capacity across satellite operators, reducing infrastructure complexity for customers through a single cloud-style access model.',
   },
   {
     icon: Shield,
-    label: 'Sovereignty',
-    title: 'Neutral, trust-critical compute',
-    text: 'The mission is to create a more credible operating model for customers that care about resilience and control.',
+    title: 'A neutral home for sovereign compute.',
+    text: 'Headquartered in Singapore, Red Dot Space is designed around markets that care about supply-chain independence, data sovereignty, and trusted infrastructure access.',
   },
 ]
 
-const productLayers = [
+const platformCards = [
   {
-    label: 'Layer 1',
-    title: 'Orbital compute infrastructure',
-    text: 'Hosted payloads and node architectures for on-orbit preprocessing, edge inference, and compute closer to source.',
-    points: ['Hosted payloads', 'Node architectures', 'Distributed orbital capacity'],
+    layer: 'LAYER 1',
+    descriptor: 'INFRASTRUCTURE · ORBITAL COMPUTE NODE',
+    number: '01',
+    title: 'Node Solo',
+    text: 'Standalone orbital compute payload for single-satellite deployment, designed for on-orbit data preprocessing and edge inference.',
+    points: [
+      'Space-ready compute hardware with thermal management and resilient payload design.',
+      'Designed for on-orbit data preprocessing and edge inference.',
+    ],
     visual: 'infrastructure',
-    visualLabel: 'Capacity in orbit',
+    visualLabel: 'Single-node payload',
+    image: '/platform-node-solo.png',
   },
   {
-    label: 'Layer 2',
-    title: 'Operations intelligence',
-    text: 'A control layer for thermal, power, health, and mission-aware workload decisions across orbital systems.',
-    points: ['Thermal twin', 'Power-aware scheduling', 'Fleet health visibility'],
+    layer: 'LAYER 1',
+    descriptor: 'INFRASTRUCTURE · ORBITAL COMPUTE NODE',
+    number: '02',
+    title: 'Node Constellation',
+    text: 'Networked compute architecture designed to scale capacity across multiple orbital nodes and satellite operators.',
+    points: [
+      'Supports distributed processing and workload balancing.',
+      'Designed for future inter-satellite compute coordination.',
+    ],
+    visual: 'infrastructure',
+    visualLabel: 'Distributed capacity',
+    image: '/platform-node-constellation.png',
+  },
+  {
+    layer: 'LAYER 2',
+    descriptor: 'OPERATIONS INTELLIGENCE',
+    number: '03',
+    title: 'Red Dot Ops Engine',
+    text: 'Intelligence layer for monitoring, scheduling, and optimizing orbital compute operations.',
+    points: [
+      'Thermal and power-aware workload planning.',
+      'Fleet health monitoring.',
+      'Radiation and environmental risk monitoring.',
+      'Predictive operations support.',
+    ],
     visual: 'ops',
-    visualLabel: 'Control layer',
+    visualLabel: 'Operations intelligence',
+    image: '/platform-ops-engine.png',
   },
   {
-    label: 'Layer 3',
-    title: 'Unified cloud access',
-    text: 'A single interface for customers that need sovereign, elastic, or hybrid orbital compute capacity.',
-    points: ['Managed interface', 'Hybrid routing', 'Sovereign and elastic demand'],
+    layer: 'LAYER 3',
+    descriptor: 'CLOUD',
+    number: '04',
+    title: 'Red Dot Cloud',
+    text: 'Managed cloud access layer for customers to consume orbital compute capacity without managing satellite infrastructure.',
+    points: [
+      'Cloud-style access to orbital compute.',
+      'Support for sovereign and dedicated workloads.',
+      'Hybrid routing between orbital and ground infrastructure.',
+    ],
     visual: 'cloud',
-    visualLabel: 'Customer interface',
+    visualLabel: 'Managed cloud layer',
+    image: '/platform-cloud.png',
   },
 ]
 
-const whyUsCards = [
+const architectureFlow = [
+  'Customer / Mission Team',
+  'Red Dot Cloud',
+  'Red Dot Ops Engine',
+  'Orbital Compute Nodes',
+  'Satellite Operators / Payload Infrastructure',
+]
+
+const whyRedDotCards = [
   {
-    label: '01 · Base',
-    title: 'Singapore as a neutral home',
-    text: 'A credible base for cross-border sovereign compute conversations across APAC and adjacent markets.',
+    title: 'Early mover in space compute infrastructure',
+    text: 'Red Dot Space is focused on building a Neocloud Provider model purpose-built for orbit, combining orbital payload thinking with cloud-style service access.',
   },
   {
-    label: '02 · Design',
-    title: 'Engineered for orbit',
-    text: 'The operating model starts with orbital realities rather than adapting a terrestrial template after the fact.',
+    title: 'Space compute ecosystem collaboration',
+    text: 'We are working across the space compute ecosystem to explore practical deployment models for orbital compute, including hardware, operations, and cloud access layers.',
   },
   {
-    label: '03 · Model',
-    title: 'A neutral cloud layer',
-    text: 'The role is to sit between orbital infrastructure and customers with a cleaner, trust-oriented operating model.',
-  },
-  {
-    label: '04 · Timing',
-    title: 'Built for where the market is going',
-    text: 'Sovereign compute and orbital infrastructure are moving from edge cases to strategic conversations.',
+    title: 'Rooted in Singapore’s sovereign infrastructure ecosystem',
+    text: 'Red Dot Space is headquartered in Singapore and built for regional markets that need trusted, sovereign, and supply-chain-resilient infrastructure.',
   },
 ]
 
@@ -85,41 +117,12 @@ const perspectiveFeatured = {
   icon: FileText,
   type: 'Research',
   title: 'The development of carbon-neutral data centres in space',
-  text: 'A Nature Electronics perspective exploring orbital edge and cloud data centres, carbon-neutral data processing in space, and a life-cycle framework for comparing orbital and terrestrial compute.',
-  cta: 'Read full paper',
+  text: 'Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like.',
+  cta: 'Read the perspective',
   href: '/space-data-centres-perspective.pdf',
-  date: 'Featured',
 }
 
-const perspectiveItems = [
-  {
-    icon: Newspaper,
-    type: 'News',
-    title: 'Future updates and announcements',
-    text: 'This space can carry product updates, ecosystem developments, milestones, and market commentary as Red Dot Space grows.',
-    cta: 'See latest updates',
-    href: '/perspective/index.html#news',
-    date: 'Soon',
-  },
-  {
-    icon: Newspaper,
-    type: 'Media',
-    title: 'Media and commentary',
-    text: 'Interviews, commentary, and external mentions can reinforce category credibility as the market conversation develops.',
-    cta: 'See coverage',
-    href: '/perspective/index.html#media',
-    date: 'Planned',
-  },
-  {
-    icon: Calendar,
-    type: 'Event',
-    title: 'Upcoming conference appearance',
-    text: 'Conference sessions, technical talks, and market briefings can surface here as dates and speakers are confirmed.',
-    cta: 'See event updates',
-    href: '/perspective/index.html#events',
-    date: 'Upcoming',
-  },
-]
+const contactChips = ['Partnerships', 'Investor conversations', 'Technical collaboration', 'Perspective paper request']
 
 const contactEmail = 'invest@reddot.space'
 
@@ -140,7 +143,7 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
   return (
     <div className="section-heading">
       <div className="eyebrow">{eyebrow}</div>
-      <h2>{title}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: title }} />
       <p>{body}</p>
     </div>
   )
@@ -267,61 +270,49 @@ export default function App() {
           }}
           onMouseLeave={() => setHeroShift({ x: 0, y: 0 })}
         >
-          <div className="hero-copy hero-copy-light">
-            <motion.div className="eyebrow" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              Orbital infrastructure for compute
-            </motion.div>
+          <div className="hero-inner">
+            <div className="hero-copy hero-copy-light">
+              <motion.div className="eyebrow" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                SPACE COMPUTE · NEUTRAL CLOUD · SINGAPORE BASE
+              </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.1 }}>
-              Compute <span>in orbit.</span>
-            </motion.h1>
+              <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.1 }}>
+                Compute <span>in orbit.</span>
+              </motion.h1>
 
-            <motion.p className="hero-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.2 }}>
-              Red Dot Space is building a neutral cloud layer for orbital compute, grounded in sovereign infrastructure thinking and a Singapore base.
-            </motion.p>
+              <motion.p className="hero-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.2 }}>
+                Red Dot Space is developing orbital compute infrastructure that connects payload, operations intelligence, and cloud access into one managed layer.
+              </motion.p>
 
-            <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
-              <a className="primary-button" href={`mailto:${contactEmail}`}>
-                Start a conversation <ArrowRight size={16} />
-              </a>
-              <a className="secondary-link" href="#mission">
-                Explore the mission
-              </a>
-            </motion.div>
+              <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
+                <a className="primary-button" href={`mailto:${contactEmail}`}>
+                  Start a conversation <ArrowRight size={16} />
+                </a>
+                <a className="secondary-link" href="#platform">
+                  Explore the platform
+                </a>
+              </motion.div>
+            </div>
           </div>
 
-          <motion.div className="hero-visual hero-visual-horizon" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15 }} aria-hidden="true">
-            <div className="hero-horizon-glow" />
-            <div className="hero-horizon-curve hero-horizon-curve-1" />
-            <div className="hero-horizon-curve hero-horizon-curve-2" />
-            <div className="hero-satellite-cluster">
-              <div className="hero-satellite-body" />
-              <div className="hero-solar hero-solar-left" />
-              <div className="hero-solar hero-solar-right" />
-              <div className="hero-satellite-node" />
-            </div>
-            <div className="hero-signal-dash hero-signal-dash-1" />
-            <div className="hero-signal-dash hero-signal-dash-2" />
-          </motion.div>
         </section>
 
         <section id="mission" className="content-section chapter-section chapter-mission">
           <FadeInSection>
             <SectionHeading
-              eyebrow="Mission"
-              title="Build a neutral cloud layer for compute beyond the grid."
-              body="Red Dot Space exists to make orbital compute practical, credible, and useful where power, reach, and sovereignty matter most."
+              eyebrow="OUR POSITIONING"
+              title="A neutral infrastructure layer for space compute."
+              body="Red Dot Space is building a neutral cloud layer for orbital compute, grounded in Singapore’s trusted infrastructure ecosystem and designed for customers who need secure, sovereign, and scalable access to space-based compute capacity."
             />
           </FadeInSection>
 
           <div className="card-grid mission-grid">
-            {missionPillars.map((item, index) => {
+            {positioningCards.map((item, index) => {
               const Icon = item.icon
               return (
                 <FadeInSection key={item.title} delay={index * 0.08}>
                   <article className="info-card mission-card">
                     <div className="icon-chip"><Icon size={20} /></div>
-                    <div className="timeline-eyebrow">{item.label}</div>
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
                   </article>
@@ -331,83 +322,97 @@ export default function App() {
           </div>
         </section>
 
-        <section id="product" className="content-section build-section chapter-section chapter-product">
+        <section id="platform" className="content-section build-section chapter-section chapter-product">
           <FadeInSection>
             <SectionHeading
-              eyebrow="Our Product"
-              title="A three-layer product from orbital capacity to customer access."
-              body="Red Dot Space is building a layered product model: infrastructure in orbit, an operational intelligence layer, and a unified interface customers can actually use."
+              eyebrow="OUR PLATFORM"
+              title="A full-stack <span class='title-accent'>space compute</span> platform from payload to cloud."
+              body="THREE LAYERS · FOUR BUILDING BLOCKS · ONE MANAGED CLOUD LAYER"
             />
           </FadeInSection>
 
-          <FadeInSection delay={0.06}>
-            <div className="build-diagram" aria-hidden="true">
-              <div className="build-diagram-line" />
-              {productLayers.map((layer) => (
-                <div key={layer.label} className="build-diagram-node">
-                  <Layers3 size={16} />
-                  <span>{layer.title}</span>
-                </div>
-              ))}
-            </div>
-          </FadeInSection>
-
-          <div className="build-stack">
-            <div className="build-rail" aria-hidden="true">
-              <div className="rail-line" />
-              {productLayers.map((layer) => (
-                <div key={layer.label} className="rail-node" />
-              ))}
-            </div>
-
-            <div className="build-layers">
-              {productLayers.map((layer, index) => (
-                <FadeInSection key={layer.title} delay={index * 0.08}>
-                  <article className="layer-card layer-card-structured">
-                    <div className="layer-label">{layer.label}</div>
-                    <div className={`build-visual build-visual-${layer.visual}`} aria-hidden="true">
-                      <div className="build-visual-grid" />
-                      <div className="build-visual-core" />
-                      <div className="build-visual-node build-visual-node-1" />
-                      <div className="build-visual-node build-visual-node-2" />
-                      <div className="build-visual-node build-visual-node-3" />
-                      <div className="build-visual-accent build-visual-accent-1" />
-                      <div className="build-visual-accent build-visual-accent-2" />
-                      <div className="build-visual-accent build-visual-accent-3" />
-                      <div className="build-visual-caption">{layer.visualLabel}</div>
+          <div className="platform-grid">
+            {platformCards.map((layer, index) => (
+              <FadeInSection key={layer.title} delay={index * 0.08}>
+                <article className="layer-card layer-card-structured platform-card">
+                  <div className="platform-card-head">
+                    <div className="layer-number">{layer.number}</div>
+                    <div className="layer-label-group">
+                      <div className="layer-label">{layer.layer}</div>
+                      <div className="layer-sublabel">{layer.descriptor}</div>
                     </div>
-                    <div className="layer-body">
-                      <div>
-                        <h3>{layer.title}</h3>
-                        <p>{layer.text}</p>
-                      </div>
-                      <ul className="layer-points">
-                        {layer.points.map((point) => (
-                          <li key={point}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                </FadeInSection>
-              ))}
-            </div>
+                  </div>
+                  <div className={`build-visual build-visual-${layer.visual}`} aria-hidden="true">
+                    <img src={layer.image} alt="" className="build-visual-image" />
+                    <div className="build-visual-image-overlay" />
+                    <div className="build-visual-caption">{layer.visualLabel}</div>
+                  </div>
+                  <div className="platform-card-body">
+                    <h3>{layer.title}</h3>
+                    <p>{layer.text}</p>
+                    <ul className="layer-points">
+                      {layer.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </FadeInSection>
+            ))}
           </div>
         </section>
 
-        <section id="why-us" className="content-section chapter-section chapter-whyus">
+        <section id="architecture" className="content-section chapter-section chapter-architecture">
+          <div className="architecture-layout">
+            <FadeInSection>
+              <div className="architecture-copy">
+                <SectionHeading
+                  eyebrow="ARCHITECTURE"
+                  title="One managed layer between <span class='title-accent'>orbit and cloud.</span>"
+                  body="Red Dot Space connects orbital compute payloads, operations intelligence, and customer cloud access into a unified infrastructure model."
+                />
+              </div>
+            </FadeInSection>
+
+            <FadeInSection delay={0.08}>
+              <div className="architecture-stack" aria-label="Architecture flow diagram">
+                <div className="architecture-stack-visual" aria-hidden="true">
+                  <img src="/architecture-stack.png" alt="" className="architecture-image-asset" />
+                  <div className="architecture-image-overlay architecture-image-overlay-stack" />
+                </div>
+                <div className="architecture-stack-line" aria-hidden="true" />
+                {architectureFlow.map((step, index) => (
+                  <div key={step} className="architecture-card-wrap">
+                    <article className="architecture-card">
+                      <div className="architecture-card-icon" />
+                      <span>{step}</span>
+                    </article>
+                    {index < architectureFlow.length - 1 && <div className="architecture-stack-dot" aria-hidden="true" />}
+                  </div>
+                ))}
+              </div>
+            </FadeInSection>
+          </div>
+        </section>
+
+        <section id="why-red-dot" className="content-section chapter-section chapter-whyus">
           <FadeInSection>
             <SectionHeading
-              eyebrow="Why Us"
-              title="Built for this category and this region."
-              body="Red Dot Space combines orbit-first product thinking, a neutral operating model, and a Singapore base that is credible for sovereign compute conversations across APAC."
+              eyebrow="WHY RED DOT"
+              title="Why Red Dot Space is positioned to <span class='title-accent'>build this layer.</span>"
+              body="A focused product model, a neutral infrastructure thesis, and a Singapore base make Red Dot Space well positioned to build this platform."
             />
           </FadeInSection>
 
           <div className="card-grid why-us-grid">
-            {whyUsCards.map((card, index) => (
+            {whyRedDotCards.map((card, index) => (
               <FadeInSection key={card.title} delay={index * 0.08}>
                 <article className="info-card why-us-card">
-                  <div className="timeline-eyebrow">{card.label}</div>
+                  <div className="why-us-icon-chip" aria-hidden="true">
+                    {index === 0 && '↗'}
+                    {index === 1 && '⟲'}
+                    {index === 2 && '◈'}
+                  </div>
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
                 </article>
@@ -419,60 +424,27 @@ export default function App() {
         <section id="perspective" className="content-section chapter-section chapter-perspective">
           <FadeInSection>
             <SectionHeading
-              eyebrow="Perspective"
-              title="Research, signals, and why this matters now."
-              body="Orbital compute is moving from frontier idea to serious technical discussion. Perspective keeps the site anchored in research, upcoming activity, and public-facing updates as the company grows."
+              eyebrow="PERSPECTIVE"
+              title="Space compute needs a new infrastructure model."
+              body="Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
             />
           </FadeInSection>
 
-          <div className="perspective-layout">
-            <FadeInSection>
+          <FadeInSection delay={0.08}>
+            <div className="perspective-layout">
               <article className="info-card perspective-featured">
                 <div className="perspective-meta-row">
-                  <div className="icon-chip"><FeaturedIcon size={18} /></div>
-                  <div className="perspective-date">{perspectiveFeatured.date}</div>
+                  <div className="perspective-kind">
+                    <div className="icon-chip"><FeaturedIcon size={18} /></div>
+                    <div className="timeline-eyebrow">{perspectiveFeatured.type}</div>
+                  </div>
                 </div>
-                <div className="timeline-eyebrow">{perspectiveFeatured.type}</div>
                 <h3>{perspectiveFeatured.title}</h3>
                 <p>{perspectiveFeatured.text}</p>
-                <a className="perspective-link" href={perspectiveFeatured.href} target="_blank" rel="noreferrer">
+                <a className="primary-button" href={perspectiveFeatured.href} target="_blank" rel="noreferrer">
                   {perspectiveFeatured.cta} <ArrowRight size={14} />
                 </a>
               </article>
-            </FadeInSection>
-
-            <div className="perspective-grid">
-              {perspectiveItems.map((item, index) => {
-                const Icon = item.icon
-                return (
-                  <FadeInSection key={item.title} delay={index * 0.08}>
-                    <article className="info-card perspective-card">
-                      <div className="perspective-meta-row">
-                        <div className="icon-chip"><Icon size={18} /></div>
-                        <div className="perspective-date">{item.date}</div>
-                      </div>
-                      <div className="timeline-eyebrow">{item.type}</div>
-                      <h3>{item.title}</h3>
-                      <p>{item.text}</p>
-                      {item.href ? (
-                        <a className="perspective-link" href={item.href}>
-                          {item.cta} <ArrowRight size={14} />
-                        </a>
-                      ) : (
-                        <div className="perspective-muted">{item.cta}</div>
-                      )}
-                    </article>
-                  </FadeInSection>
-                )
-              })}
-            </div>
-          </div>
-
-          <FadeInSection delay={0.12}>
-            <div className="perspective-footer-actions">
-              <a className="secondary-link" href="/perspective/index.html">
-                View all perspective <ArrowRight size={14} />
-              </a>
             </div>
           </FadeInSection>
         </section>
@@ -482,10 +454,13 @@ export default function App() {
             <div className="contact-panel">
               <div>
                 <div className="eyebrow">Contact</div>
-                <h2>See you in orbit.</h2>
+                <h2>Let’s talk about orbital compute.</h2>
                 <p>
-                  If you are exploring sovereign compute, orbital infrastructure, partnerships, or research collaboration, start the conversation here.
+                  Whether you are exploring satellite infrastructure, sovereign cloud models, orbital AI workloads, or future mission partnerships, we would be happy to start a conversation.
                 </p>
+                <a className="primary-button" href={`mailto:${contactEmail}`}>
+                  Talk to us <ArrowRight size={16} />
+                </a>
               </div>
 
               <div className="contact-meta">
@@ -499,8 +474,14 @@ export default function App() {
                 </div>
                 <div>
                   <span className="meta-label">Focus</span>
-                  <span>Research, partnerships, and public market development</span>
+                  <span>Orbital compute platform conversations</span>
                 </div>
+              </div>
+
+              <div className="contact-chip-row" aria-label="Contact topics">
+                {contactChips.map((chip) => (
+                  <span key={chip} className="contact-chip">{chip}</span>
+                ))}
               </div>
             </div>
           </FadeInSection>
