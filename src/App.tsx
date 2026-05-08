@@ -13,18 +13,18 @@ const navLinks = [
 const positioningCards = [
   {
     icon: Zap,
-    title: 'Operations intelligence, engineered for orbit.',
-    text: 'We apply experience from data center thermal and energy optimization to the design of orbital compute payloads and operations intelligence. The goal is to make space-based compute more reliable, observable, and efficient.',
+    title: 'Bring compute closer to orbital data.',
+    text: 'Enable data to be processed, filtered, and acted on closer to satellites and orbital assets.',
   },
   {
     icon: Layers3,
-    title: 'A managed cloud layer across orbital capacity.',
-    text: 'Red Dot Space is developing a managed service layer that can aggregate compute capacity across satellite operators, reducing infrastructure complexity for customers through a single cloud-style access model.',
+    title: 'Make space compute accessible.',
+    text: 'Create a managed cloud-style access layer so customers can explore orbital compute without directly managing satellite infrastructure.',
   },
   {
     icon: Shield,
-    title: 'A neutral home for sovereign compute.',
-    text: 'Headquartered in Singapore, Red Dot Space is designed around markets that care about supply-chain independence, data sovereignty, and trusted infrastructure access.',
+    title: 'Design for sovereignty and trust.',
+    text: 'Build from Singapore with a focus on neutral access, supply-chain resilience, and trusted infrastructure.',
   },
 ]
 
@@ -75,7 +75,7 @@ const platformCards = [
   },
   {
     layer: 'LAYER 3',
-    descriptor: 'CLOUD',
+    descriptor: 'CLOUD ACCESS',
     number: '04',
     title: 'Red Dot Cloud',
     text: 'Managed cloud access layer for customers to consume orbital compute capacity without managing satellite infrastructure.',
@@ -90,30 +90,22 @@ const platformCards = [
   },
 ]
 
-const architectureFlow = [
-  'Customer / Mission Team',
-  'Red Dot Cloud',
-  'Red Dot Ops Engine',
-  'Orbital Compute Nodes',
-  'Satellite Operators / Payload Infrastructure',
-]
-
 const whyRedDotCards = [
   {
-    title: 'Early mover in space compute infrastructure',
-    text: 'Red Dot Space is focused on building a Neocloud Provider model purpose-built for orbit, combining orbital payload thinking with cloud-style service access.',
+    title: 'Compute operations DNA',
+    text: 'Our approach is informed by experience in data center thermal, energy, and workload optimization — disciplines that become critical when compute moves into constrained orbital environments.',
   },
   {
-    title: 'Space compute ecosystem collaboration',
-    text: 'We are working across the space compute ecosystem to explore practical deployment models for orbital compute, including hardware, operations, and cloud access layers.',
+    title: 'Singapore-based neutrality',
+    text: 'Headquartered in Singapore, Red Dot Space is built from a trusted infrastructure hub for markets that care about sovereignty, resilience, and regional access.',
   },
   {
-    title: 'Rooted in Singapore’s sovereign infrastructure ecosystem',
-    text: 'Red Dot Space is headquartered in Singapore and built for regional markets that need trusted, sovereign, and supply-chain-resilient infrastructure.',
+    title: 'Ecosystem collaboration',
+    text: 'We are working across the space compute ecosystem to explore practical deployment models across hardware, payload operations, cloud access, and mission requirements.',
   },
 ]
 
-const perspectiveFilters = ['All', 'Research', 'Insights', 'News', 'Events'] as const
+const perspectiveFilters = ['Research', 'Insights', 'News', 'Events'] as const
 
 const perspectiveItems = [
   {
@@ -158,14 +150,14 @@ export default function App() {
   const [headerCondensed, setHeaderCondensed] = useState(false)
   const [activeSection, setActiveSection] = useState('#mission')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activePerspectiveFilter, setActivePerspectiveFilter] = useState<(typeof perspectiveFilters)[number]>('All')
+  const [activePerspectiveFilter, setActivePerspectiveFilter] = useState<(typeof perspectiveFilters)[number]>('Research')
 
   const heroStyle = {
     '--hero-shift-x': `${heroShift.x}px`,
     '--hero-shift-y': `${heroShift.y}px`,
   } as React.CSSProperties
 
-  const visiblePerspectiveItems = perspectiveItems.filter((item) => activePerspectiveFilter === 'All' || item.type === activePerspectiveFilter)
+  const visiblePerspectiveItems = perspectiveItems.filter((item) => item.type === activePerspectiveFilter)
 
   useEffect(() => {
     const onScroll = () => setHeaderCondensed(window.scrollY > 48)
@@ -287,8 +279,8 @@ export default function App() {
               </motion.h1>
 
               <motion.p className="hero-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.2 }}>
-                Red Dot Space is developing orbital compute infrastructure that connects payload, operations intelligence, and cloud access into one managed layer.
-              </motion.p>
+              Red Dot Space is building a neutral cloud layer for orbital compute — connecting payload, operations intelligence, and cloud access into one managed infrastructure model.
+            </motion.p>
 
               <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
                 <a className="primary-button" href={`mailto:${contactEmail}`}>
@@ -298,6 +290,7 @@ export default function App() {
                   Explore the platform
                 </a>
               </motion.div>
+
             </div>
           </div>
 
@@ -306,9 +299,9 @@ export default function App() {
         <section id="mission" className="content-section chapter-section chapter-mission">
           <FadeInSection>
             <SectionHeading
-              eyebrow="OUR POSITIONING"
-              title="A neutral infrastructure layer for space compute."
-              body="Red Dot Space is building a neutral cloud layer for orbital compute, grounded in Singapore’s trusted infrastructure ecosystem and designed for customers who need secure, sovereign, and scalable access to space-based compute capacity."
+              eyebrow="MISSION"
+              title="Building neutral infrastructure for the next cloud layer beyond Earth."
+              body="As orbital systems generate more data, compute will need to move closer to where that data is created. Red Dot Space is developing a neutral infrastructure layer designed to support secure, sovereign, and scalable access to space-based compute capacity."
             />
           </FadeInSection>
 
@@ -333,8 +326,12 @@ export default function App() {
             <SectionHeading
               eyebrow="OUR PLATFORM"
               title="A full-stack <span class='title-accent'>space compute</span> platform from payload to cloud."
-              body="THREE LAYERS · FOUR BUILDING BLOCKS · ONE MANAGED CLOUD LAYER"
+              body="The platform is organized across three layers: orbital compute nodes, operations intelligence, and managed cloud access."
             />
+          </FadeInSection>
+
+          <FadeInSection delay={0.04}>
+            <p className="section-subline">THREE LAYERS · FOUR BUILDING BLOCKS · ONE MANAGED CLOUD LAYER</p>
           </FadeInSection>
 
           <div className="platform-grid">
@@ -368,45 +365,12 @@ export default function App() {
           </div>
         </section>
 
-        <section id="architecture" className="content-section chapter-section chapter-architecture">
-          <div className="architecture-layout">
-            <FadeInSection>
-              <div className="architecture-copy">
-                <SectionHeading
-                  eyebrow="ARCHITECTURE"
-                  title="One managed layer between <span class='title-accent'>orbit and cloud.</span>"
-                  body="Red Dot Space connects orbital compute payloads, operations intelligence, and customer cloud access into a unified infrastructure model."
-                />
-              </div>
-            </FadeInSection>
-
-            <FadeInSection delay={0.08}>
-              <div className="architecture-stack" aria-label="Architecture flow diagram">
-                <div className="architecture-stack-visual" aria-hidden="true">
-                  <img src="/architecture-stack.png" alt="" className="architecture-image-asset" />
-                  <div className="architecture-image-overlay architecture-image-overlay-stack" />
-                </div>
-                <div className="architecture-stack-line" aria-hidden="true" />
-                {architectureFlow.map((step, index) => (
-                  <div key={step} className="architecture-card-wrap">
-                    <article className="architecture-card">
-                      <div className="architecture-card-icon" />
-                      <span>{step}</span>
-                    </article>
-                    {index < architectureFlow.length - 1 && <div className="architecture-stack-dot" aria-hidden="true" />}
-                  </div>
-                ))}
-              </div>
-            </FadeInSection>
-          </div>
-        </section>
-
         <section id="why-red-dot" className="content-section chapter-section chapter-whyus">
           <FadeInSection>
             <SectionHeading
               eyebrow="WHY RED DOT"
               title="Why Red Dot Space is positioned to <span class='title-accent'>build this layer.</span>"
-              body="A focused product model, a neutral infrastructure thesis, and a Singapore base make Red Dot Space well positioned to build this platform."
+              body="Red Dot Space brings together compute operations thinking, Singapore-based neutrality, and ecosystem collaboration to explore a practical path toward orbital cloud infrastructure."
             />
           </FadeInSection>
 
@@ -496,10 +460,6 @@ export default function App() {
                 <div>
                   <span className="meta-label">Base</span>
                   <span>Singapore</span>
-                </div>
-                <div>
-                  <span className="meta-label">Focus</span>
-                  <span>Orbital compute platform conversations</span>
                 </div>
               </div>
 
