@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, FileText, Layers3, Menu, Shield, X, Zap } from 'lucide-react'
+import { ArrowRight, Layers3, Menu, Shield, X, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
 
 const navLinks = [
@@ -113,14 +113,18 @@ const whyRedDotCards = [
   },
 ]
 
-const perspectiveFeatured = {
-  icon: FileText,
-  type: 'Research',
-  title: 'The development of carbon-neutral data centres in space',
-  text: 'Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like.',
-  cta: 'Read the perspective',
-  href: '/space-data-centres-perspective.pdf',
-}
+const perspectiveFilters = ['All', 'Research', 'Insights', 'News', 'Events'] as const
+
+const perspectiveItems = [
+  {
+    type: 'Research',
+    title: 'Space compute needs a new infrastructure model.',
+    description:
+      'Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like.',
+    cta: 'Read the perspective',
+    href: '/space-data-centres-perspective.pdf',
+  },
+]
 
 const contactChips = ['Partnerships', 'Investor conversations', 'Technical collaboration', 'Perspective paper request']
 
@@ -150,16 +154,18 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 }
 
 export default function App() {
-  const FeaturedIcon = perspectiveFeatured.icon
   const [heroShift, setHeroShift] = useState({ x: 0, y: 0 })
   const [headerCondensed, setHeaderCondensed] = useState(false)
   const [activeSection, setActiveSection] = useState('#mission')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activePerspectiveFilter, setActivePerspectiveFilter] = useState<(typeof perspectiveFilters)[number]>('All')
 
   const heroStyle = {
     '--hero-shift-x': `${heroShift.x}px`,
     '--hero-shift-y': `${heroShift.y}px`,
   } as React.CSSProperties
+
+  const visiblePerspectiveItems = perspectiveItems.filter((item) => activePerspectiveFilter === 'All' || item.type === activePerspectiveFilter)
 
   useEffect(() => {
     const onScroll = () => setHeaderCondensed(window.scrollY > 48)
@@ -425,26 +431,45 @@ export default function App() {
           <FadeInSection>
             <SectionHeading
               eyebrow="PERSPECTIVE"
-              title="Space compute needs a new infrastructure model."
-              body="Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
+              title="Research, insights, news, and events from <span class='title-accent'>Red Dot Space.</span>"
+              body="We share perspectives on orbital compute, sovereign infrastructure, and the emerging cloud layer beyond Earth. This space will grow to include research papers, company updates, event notes, and field perspectives from the space compute ecosystem."
             />
           </FadeInSection>
 
           <FadeInSection delay={0.08}>
             <div className="perspective-layout">
-              <article className="info-card perspective-featured">
-                <div className="perspective-meta-row">
-                  <div className="perspective-kind">
-                    <div className="icon-chip"><FeaturedIcon size={18} /></div>
-                    <div className="timeline-eyebrow">{perspectiveFeatured.type}</div>
-                  </div>
+              <div className="perspective-toolbar">
+                <div className="perspective-filters" aria-label="Perspective filters">
+                  {perspectiveFilters.map((filter) => (
+                    <button
+                      key={filter}
+                      type="button"
+                      className={`perspective-filter${activePerspectiveFilter === filter ? ' is-active' : ''}`}
+                      onClick={() => setActivePerspectiveFilter(filter)}
+                    >
+                      {filter}
+                    </button>
+                  ))}
                 </div>
-                <h3>{perspectiveFeatured.title}</h3>
-                <p>{perspectiveFeatured.text}</p>
-                <a className="primary-button" href={perspectiveFeatured.href} target="_blank" rel="noreferrer">
-                  {perspectiveFeatured.cta} <ArrowRight size={14} />
-                </a>
-              </article>
+              </div>
+
+              <div className="perspective-grid">
+                {visiblePerspectiveItems.map((item) => (
+                  <article key={item.title} className="info-card perspective-card perspective-hub-card">
+                    <div className="perspective-card-top">
+                      <div className="perspective-kind">
+                        <div className="perspective-signal-dot" aria-hidden="true" />
+                        <div className="timeline-eyebrow">{item.type}</div>
+                      </div>
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <a className="perspective-link" href={item.href} target="_blank" rel="noreferrer">
+                      {item.cta} <ArrowRight size={14} />
+                    </a>
+                  </article>
+                ))}
+              </div>
             </div>
           </FadeInSection>
         </section>

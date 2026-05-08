@@ -1048,8 +1048,8 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .layer-label-group {
@@ -1090,7 +1090,7 @@ select {
   color: rgba(143, 180, 255, 0.86);
   font-family: var(--font-display);
   font-size: 0.62rem;
-  line-height: 1.3;
+  line-height: 1.25;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1155,7 +1155,7 @@ select {
 .platform-card-body {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   flex: 1;
 }
 
@@ -1581,66 +1581,90 @@ select {
   margin-top: 38px;
 }
 
+.perspective-toolbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.perspective-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.perspective-filter {
+  appearance: none;
+  border: 1px solid rgba(163, 189, 255, 0.12);
+  background: rgba(122, 166, 255, 0.04);
+  color: var(--color-text-muted);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.perspective-filter.is-active {
+  color: var(--color-text);
+  border-color: rgba(122, 166, 255, 0.26);
+  background: rgba(122, 166, 255, 0.08);
+}
+
 .perspective-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
 
-.perspective-featured,
 .perspective-card {
   height: 100%;
 }
 
-.perspective-featured {
-  padding: 32px 34px;
-  border-radius: 26px;
-}
-
-.perspective-featured h3,
 .perspective-card h3 {
   margin: 14px 0 0;
 }
 
-.perspective-featured h3 {
-  font-size: 1.9rem;
-  line-height: 1.12;
-}
-
-.perspective-featured p {
-  max-width: 62ch;
-  margin: 22px 0 0;
-}
-
-.perspective-featured .primary-button {
-  margin-top: 32px;
-}
-
 .perspective-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.55rem;
   line-height: 1.2;
 }
 
-.perspective-meta-row {
+.perspective-hub-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 24px;
 }
 
-.perspective-date {
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
+.perspective-hub-card p {
+  margin: 18px 0 0;
+}
+
+.perspective-hub-card .perspective-link {
+  margin-top: auto;
+  padding-top: 26px;
+}
+
+.perspective-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .perspective-kind {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.perspective-kind .icon-chip {
-  margin-bottom: 0;
+.perspective-signal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px rgba(212, 33, 40, 0.38);
 }
 
 .perspective-kind .timeline-eyebrow {
@@ -1652,15 +1676,9 @@ select {
   align-items: center;
   gap: 8px;
   margin-top: 18px;
-  color: var(--color-text);
+  color: var(--color-sky);
   text-decoration: none;
   font-weight: 500;
-}
-
-.perspective-muted {
-  margin-top: 18px;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
 }
 
 .contact-section {
@@ -1671,8 +1689,8 @@ select {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-  gap: 36px;
-  padding: 38px;
+  gap: 42px;
+  padding: 42px;
   border-radius: 30px;
   overflow: hidden;
 }
@@ -1684,7 +1702,7 @@ select {
 }
 
 .contact-panel > div:first-child .primary-button {
-  margin-top: 30px;
+  margin-top: 38px;
 }
 
 .contact-panel::after {
@@ -1720,7 +1738,7 @@ select {
   flex-wrap: wrap;
   gap: 10px;
   grid-column: 1 / -1;
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 .contact-chip {
