@@ -4,9 +4,9 @@ import { motion } from 'motion/react'
 
 const navLinks = [
   { href: '#mission', label: 'Mission' },
+  { href: '#paper', label: 'Perspective' },
   { href: '#platform', label: 'Platform' },
   { href: '#why-red-dot', label: 'Why Red Dot' },
-  { href: '#perspective', label: 'Perspective' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -105,16 +105,18 @@ const whyRedDotCards = [
   },
 ]
 
-const perspectiveFilters = ['Research', 'Insights', 'News', 'Events'] as const
-
-const perspectiveItems = [
+const perspectiveHighlights = [
   {
-    type: 'Research',
-    title: 'Space compute needs a new infrastructure model.',
-    description:
-      'Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like.',
-    cta: 'Read the perspective',
-    href: '/space-data-centres-perspective.pdf',
+    title: 'Secure by design',
+    text: 'Built around trusted infrastructure thinking for sensitive and sovereignty-aware workloads.',
+  },
+  {
+    title: 'Cloud model in orbit',
+    text: 'Explores how managed access and operations layers can make orbital compute usable.',
+  },
+  {
+    title: 'Infrastructure shift',
+    text: 'Frames space compute as part of the next cloud layer rather than a standalone payload story.',
   },
 ]
 
@@ -150,14 +152,10 @@ export default function App() {
   const [headerCondensed, setHeaderCondensed] = useState(false)
   const [activeSection, setActiveSection] = useState('#mission')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activePerspectiveFilter, setActivePerspectiveFilter] = useState<(typeof perspectiveFilters)[number]>('Research')
-
   const heroStyle = {
     '--hero-shift-x': `${heroShift.x}px`,
     '--hero-shift-y': `${heroShift.y}px`,
   } as React.CSSProperties
-
-  const visiblePerspectiveItems = perspectiveItems.filter((item) => item.type === activePerspectiveFilter)
 
   useEffect(() => {
     const onScroll = () => setHeaderCondensed(window.scrollY > 48)
@@ -321,6 +319,43 @@ export default function App() {
           </div>
         </section>
 
+        <section id="paper" className="chapter-section chapter-perspective-spotlight perspective-spotlight-section">
+          <div className="perspective-spotlight-inner">
+          <div className="perspective-spotlight-layout">
+            <FadeInSection>
+              <div className="perspective-copy-block">
+                <SectionHeading
+                  eyebrow="PERSPECTIVE"
+                  title="Space compute needs a new infrastructure model."
+                  body="Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
+                />
+
+                <div className="perspective-mini-points">
+                  {perspectiveHighlights.map((item) => (
+                    <div key={item.title} className="perspective-mini-point">
+                      <div className="perspective-signal-dot" aria-hidden="true" />
+                      <div>
+                        <h3>{item.title}</h3>
+                        <p>{item.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="perspective-actions">
+                  <a className="primary-button" href="/space-data-centres-perspective.pdf" target="_blank" rel="noreferrer">
+                    Read our research paper <ArrowRight size={14} />
+                  </a>
+                  <p className="perspective-supporting-copy">
+                    Explore the full vision, infrastructure model, and strategic context in the perspective paper.
+                  </p>
+                </div>
+              </div>
+            </FadeInSection>
+          </div>
+          </div>
+        </section>
+
         <section id="platform" className="content-section build-section chapter-section chapter-product">
           <FadeInSection>
             <SectionHeading
@@ -389,53 +424,6 @@ export default function App() {
               </FadeInSection>
             ))}
           </div>
-        </section>
-
-        <section id="perspective" className="content-section chapter-section chapter-perspective">
-          <FadeInSection>
-            <SectionHeading
-              eyebrow="PERSPECTIVE"
-              title="Research, insights, news, and events from <span class='title-accent'>Red Dot Space.</span>"
-              body="We share perspectives on orbital compute, sovereign infrastructure, and the emerging cloud layer beyond Earth. This space will grow to include research papers, company updates, event notes, and field perspectives from the space compute ecosystem."
-            />
-          </FadeInSection>
-
-          <FadeInSection delay={0.08}>
-            <div className="perspective-layout">
-              <div className="perspective-toolbar">
-                <div className="perspective-filters" aria-label="Perspective filters">
-                  {perspectiveFilters.map((filter) => (
-                    <button
-                      key={filter}
-                      type="button"
-                      className={`perspective-filter${activePerspectiveFilter === filter ? ' is-active' : ''}`}
-                      onClick={() => setActivePerspectiveFilter(filter)}
-                    >
-                      {filter}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="perspective-grid">
-                {visiblePerspectiveItems.map((item) => (
-                  <article key={item.title} className="info-card perspective-card perspective-hub-card">
-                    <div className="perspective-card-top">
-                      <div className="perspective-kind">
-                        <div className="perspective-signal-dot" aria-hidden="true" />
-                        <div className="timeline-eyebrow">{item.type}</div>
-                      </div>
-                    </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                    <a className="perspective-link" href={item.href} target="_blank" rel="noreferrer">
-                      {item.cta} <ArrowRight size={14} />
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </FadeInSection>
         </section>
 
         <section id="contact" className="content-section contact-section chapter-section chapter-contact">

@@ -1584,90 +1584,6 @@ select {
   z-index: 1;
 }
 
-.perspective-layout {
-  display: grid;
-  gap: 18px;
-  margin-top: 38px;
-}
-
-.perspective-toolbar {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.perspective-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.perspective-filter {
-  appearance: none;
-  border: 1px solid rgba(163, 189, 255, 0.08);
-  background: rgba(122, 166, 255, 0.02);
-  color: var(--color-text-muted);
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.perspective-filter.is-active {
-  color: var(--color-text);
-  border-color: rgba(122, 166, 255, 0.18);
-  background: rgba(122, 166, 255, 0.05);
-}
-
-.perspective-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.perspective-card {
-  height: 100%;
-}
-
-.perspective-card h3 {
-  margin: 14px 0 0;
-}
-
-.perspective-card h3 {
-  font-size: 1.55rem;
-  line-height: 1.2;
-}
-
-.perspective-hub-card {
-  display: flex;
-  flex-direction: column;
-  padding: 28px;
-  border-radius: 24px;
-}
-
-.perspective-hub-card p {
-  margin: 18px 0 0;
-}
-
-.perspective-hub-card .perspective-link {
-  margin-top: auto;
-  padding-top: 26px;
-}
-
-.perspective-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.perspective-kind {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .perspective-signal-dot {
   width: 8px;
   height: 8px;
@@ -1676,18 +1592,91 @@ select {
   box-shadow: 0 0 10px rgba(212, 33, 40, 0.38);
 }
 
-.perspective-kind .timeline-eyebrow {
-  margin: 0;
+.perspective-spotlight-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: stretch;
 }
 
-.perspective-link {
-  display: inline-flex;
+.perspective-spotlight-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(4, 8, 17, 0.92) 0%, rgba(4, 8, 17, 0.8) 38%, rgba(4, 8, 17, 0.62) 60%, rgba(4, 8, 17, 0.86) 100%),
+    linear-gradient(180deg, rgba(4, 8, 17, 0.08), rgba(4, 8, 17, 0.18)),
+    url('/perspective-paper-cover.png');
+  background-size: cover;
+  background-position: center right;
+  border-block: 1px solid rgba(163, 189, 255, 0.08);
+}
+
+.perspective-spotlight-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 32%, rgba(122, 166, 255, 0.1), transparent 20%),
+    linear-gradient(180deg, rgba(4, 8, 17, 0.08), rgba(4, 8, 17, 0.14));
+}
+
+.perspective-spotlight-inner {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 72px 0 78px;
+  position: relative;
+  z-index: 1;
+}
+
+.perspective-copy-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.perspective-mini-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.perspective-mini-point {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.perspective-mini-point h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.perspective-mini-point p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.perspective-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
   align-items: center;
-  gap: 8px;
-  margin-top: 18px;
-  color: var(--color-sky);
-  text-decoration: none;
-  font-weight: 500;
+  margin-top: 30px;
+}
+
+.perspective-supporting-copy {
+  max-width: 32ch;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
 }
 
 .contact-section {
@@ -1846,8 +1835,7 @@ select {
   .mission-grid,
   .why-us-grid,
   .platform-grid,
-  .perspective-layout,
-  .perspective-grid {
+  .perspective-mini-points {
     grid-template-columns: 1fr;
   }
 
@@ -1863,6 +1851,14 @@ select {
 
   .platform-grid {
     gap: 18px;
+  }
+
+  .perspective-spotlight-inner {
+    padding: 52px 0 58px;
+  }
+
+  .perspective-feature-visual {
+    min-height: 280px;
   }
 
   .architecture-layout {
