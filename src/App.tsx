@@ -4,13 +4,12 @@ import { motion } from 'motion/react'
 
 const navLinks = [
   { href: '#mission', label: 'Mission' },
-  { href: '#paper', label: 'Perspective' },
   { href: '#platform', label: 'Platform' },
   { href: '#why-red-dot', label: 'Why Red Dot' },
   { href: '#contact', label: 'Contact' },
 ]
 
-const positioningCards = [
+const missionCards = [
   {
     icon: Zap,
     title: 'Bring compute closer to orbital data.',
@@ -35,10 +34,7 @@ const platformCards = [
     number: '01',
     title: 'Node Solo',
     text: 'Standalone orbital compute payload for single-satellite deployment, designed for on-orbit data preprocessing and edge inference.',
-    points: [
-      'Space-ready compute hardware with thermal management and resilient payload design.',
-      'Designed for on-orbit data preprocessing and edge inference.',
-    ],
+    points: ['Space-ready compute hardware', 'On-orbit preprocessing and inference'],
     visual: 'infrastructure',
     visualLabel: 'Single-node payload',
     image: '/platform-node-solo.png',
@@ -49,10 +45,7 @@ const platformCards = [
     number: '02',
     title: 'Node Constellation',
     text: 'Networked compute architecture designed to scale capacity across multiple orbital nodes and satellite operators.',
-    points: [
-      'Supports distributed processing and workload balancing.',
-      'Designed for future inter-satellite compute coordination.',
-    ],
+    points: ['Distributed processing', 'Workload balancing across nodes'],
     visual: 'infrastructure',
     visualLabel: 'Distributed capacity',
     image: '/platform-node-constellation.png',
@@ -63,12 +56,7 @@ const platformCards = [
     number: '03',
     title: 'Red Dot Ops Engine',
     text: 'Intelligence layer for monitoring, scheduling, and optimizing orbital compute operations.',
-    points: [
-      'Thermal and power-aware workload planning.',
-      'Fleet health monitoring.',
-      'Radiation and environmental risk monitoring.',
-      'Predictive operations support.',
-    ],
+    points: ['Power-aware workload planning', 'Fleet health and predictive operations'],
     visual: 'ops',
     visualLabel: 'Operations intelligence',
     image: '/platform-ops-engine.png',
@@ -79,11 +67,7 @@ const platformCards = [
     number: '04',
     title: 'Red Dot Cloud',
     text: 'Managed cloud access layer for customers to consume orbital compute capacity without managing satellite infrastructure.',
-    points: [
-      'Cloud-style access to orbital compute.',
-      'Support for sovereign and dedicated workloads.',
-      'Hybrid routing between orbital and ground infrastructure.',
-    ],
+    points: ['Cloud-style access to orbital compute', 'Support for sovereign, dedicated, and hybrid orbital-terrestrial workloads'],
     visual: 'cloud',
     visualLabel: 'Managed cloud layer',
     image: '/platform-cloud.png',
@@ -105,22 +89,7 @@ const whyRedDotCards = [
   },
 ]
 
-const perspectiveHighlights = [
-  {
-    title: 'Secure by design',
-    text: 'Built around trusted infrastructure thinking for sensitive and sovereignty-aware workloads.',
-  },
-  {
-    title: 'Cloud model in orbit',
-    text: 'Explores how managed access and operations layers can make orbital compute usable.',
-  },
-  {
-    title: 'Infrastructure shift',
-    text: 'Frames space compute as part of the next cloud layer rather than a standalone payload story.',
-  },
-]
-
-const contactChips = ['Partnerships', 'Investor conversations', 'Technical collaboration', 'Perspective paper request']
+const contactChips = ['Partnerships', 'Investor conversations', 'Technical collaboration', 'Research paper access']
 
 const contactEmail = 'invest@reddot.space'
 
@@ -152,6 +121,7 @@ export default function App() {
   const [headerCondensed, setHeaderCondensed] = useState(false)
   const [activeSection, setActiveSection] = useState('#mission')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   const heroStyle = {
     '--hero-shift-x': `${heroShift.x}px`,
     '--hero-shift-y': `${heroShift.y}px`,
@@ -273,12 +243,14 @@ export default function App() {
               </motion.div>
 
               <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.1 }}>
-                Compute <span>in orbit.</span>
+                Space Data Centre.
+                <br />
+                <span>Compute in orbit.</span>
               </motion.h1>
 
               <motion.p className="hero-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.2 }}>
-              Red Dot Space is building a neutral cloud layer for orbital compute — connecting payload, operations intelligence, and cloud access into one managed infrastructure model.
-            </motion.p>
+                Red Dot Space is developing orbital compute infrastructure that connects payload, operations intelligence, and cloud access into one managed layer. Built from Singapore, we are shaping a neutral infrastructure model for the next phase of digital infrastructure beyond Earth.
+              </motion.p>
 
               <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
                 <a className="primary-button" href={`mailto:${contactEmail}`}>
@@ -288,23 +260,21 @@ export default function App() {
                   Explore the platform
                 </a>
               </motion.div>
-
             </div>
           </div>
-
         </section>
 
         <section id="mission" className="content-section chapter-section chapter-mission">
           <FadeInSection>
             <SectionHeading
               eyebrow="MISSION"
-              title="Building neutral infrastructure for the next cloud layer beyond Earth."
+              title="Our mission is to make orbital compute accessible, trusted, and operationally reliable."
               body="As orbital systems generate more data, compute will need to move closer to where that data is created. Red Dot Space is developing a neutral infrastructure layer designed to support secure, sovereign, and scalable access to space-based compute capacity."
             />
           </FadeInSection>
 
           <div className="card-grid mission-grid">
-            {positioningCards.map((item, index) => {
+            {missionCards.map((item, index) => {
               const Icon = item.icon
               return (
                 <FadeInSection key={item.title} delay={index * 0.08}>
@@ -321,38 +291,26 @@ export default function App() {
 
         <section id="paper" className="chapter-section chapter-perspective-spotlight perspective-spotlight-section">
           <div className="perspective-spotlight-inner">
-          <div className="perspective-spotlight-layout">
-            <FadeInSection>
-              <div className="perspective-copy-block">
-                <SectionHeading
-                  eyebrow="PERSPECTIVE"
-                  title="Space compute needs a new infrastructure model."
-                  body="Our perspective paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
-                />
+            <div className="perspective-spotlight-layout">
+              <FadeInSection>
+                <div className="perspective-copy-block">
+                  <SectionHeading
+                    eyebrow="RESEARCH PAPER"
+                    title="Space compute needs a new infrastructure model."
+                    body="Our research paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
+                  />
 
-                <div className="perspective-mini-points">
-                  {perspectiveHighlights.map((item) => (
-                    <div key={item.title} className="perspective-mini-point">
-                      <div className="perspective-signal-dot" aria-hidden="true" />
-                      <div>
-                        <h3>{item.title}</h3>
-                        <p>{item.text}</p>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="perspective-actions">
+                    <a className="primary-button" href="/space-data-centres-perspective.pdf" target="_blank" rel="noreferrer">
+                      Read our research paper <ArrowRight size={14} />
+                    </a>
+                    <p className="perspective-supporting-copy">
+                      Explore the infrastructure thesis behind Space Data Centres and the future of orbital compute.
+                    </p>
+                  </div>
                 </div>
-
-                <div className="perspective-actions">
-                  <a className="primary-button" href="/space-data-centres-perspective.pdf" target="_blank" rel="noreferrer">
-                    Read our research paper <ArrowRight size={14} />
-                  </a>
-                  <p className="perspective-supporting-copy">
-                    Explore the full vision, infrastructure model, and strategic context in the perspective paper.
-                  </p>
-                </div>
-              </div>
-            </FadeInSection>
-          </div>
+              </FadeInSection>
+            </div>
           </div>
         </section>
 
@@ -433,7 +391,7 @@ export default function App() {
                 <div className="eyebrow">Contact</div>
                 <h2>Let’s talk about orbital compute.</h2>
                 <p>
-                  Whether you are exploring satellite infrastructure, sovereign cloud models, orbital AI workloads, or future mission partnerships, we would be happy to start a conversation.
+                  For partnerships, technical collaboration, research paper access, or investor conversations, we would be happy to start a conversation.
                 </p>
                 <a className="primary-button" href={`mailto:${contactEmail}`}>
                   Talk to us <ArrowRight size={16} />
