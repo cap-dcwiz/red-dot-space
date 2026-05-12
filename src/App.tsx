@@ -4,8 +4,9 @@ import { motion } from 'motion/react'
 
 const navLinks = [
   { href: '#mission', label: 'Mission' },
+  { href: '#purpose', label: 'Purpose' },
   { href: '#platform', label: 'Platform' },
-  { href: '#why-red-dot', label: 'Why Red Dot' },
+  { href: '#advantage', label: 'Advantage' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -89,8 +90,6 @@ const whyRedDotCards = [
   },
 ]
 
-const contactChips = ['Partnerships', 'Investor conversations', 'Technical collaboration', 'Research paper access']
-
 const contactEmail = 'invest@reddot.space'
 
 function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
@@ -119,7 +118,7 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 export default function App() {
   const [heroShift, setHeroShift] = useState({ x: 0, y: 0 })
   const [headerCondensed, setHeaderCondensed] = useState(false)
-  const [activeSection, setActiveSection] = useState('#mission')
+  const [activeSection, setActiveSection] = useState('#purpose')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const heroStyle = {
@@ -253,11 +252,12 @@ export default function App() {
               </motion.p>
 
               <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
-                <a className="primary-button" href={`mailto:${contactEmail}`}>
-                  Start a conversation <ArrowRight size={16} />
-                </a>
-                <a className="secondary-link" href="#platform">
+                <a className="primary-button" href="#platform">
                   Explore the platform
+                </a>
+                <a className="secondary-link" href={`mailto:${contactEmail}`}>
+                  Start a conversation
+                  <ArrowRight size={16} />
                 </a>
               </motion.div>
             </div>
@@ -268,7 +268,7 @@ export default function App() {
           <FadeInSection>
             <SectionHeading
               eyebrow="MISSION"
-              title="Our mission is to make orbital compute accessible, trusted, and operationally reliable."
+              title="Make orbital compute accessible, trusted, and operationally reliable."
               body="As orbital systems generate more data, compute will need to move closer to where that data is created. Red Dot Space is developing a neutral infrastructure layer designed to support secure, sovereign, and scalable access to space-based compute capacity."
             />
           </FadeInSection>
@@ -289,24 +289,24 @@ export default function App() {
           </div>
         </section>
 
-        <section id="paper" className="chapter-section chapter-perspective-spotlight perspective-spotlight-section">
+        <section id="purpose" className="chapter-section chapter-perspective-spotlight perspective-spotlight-section">
           <div className="perspective-spotlight-inner">
             <div className="perspective-spotlight-layout">
               <FadeInSection>
                 <div className="perspective-copy-block">
-                  <SectionHeading
-                    eyebrow="RESEARCH PAPER"
-                    title="Space compute needs a new infrastructure model."
-                    body="Our research paper outlines why orbital workloads require a neutral cloud layer, how sovereign infrastructure thinking applies to space compute, and what a future space compute platform could look like."
-                  />
+                  <div className="section-heading perspective-thesis-heading">
+                    <div className="eyebrow">PURPOSE</div>
+                    <h2>The next era of compute isn’t coming, it’s already here.</h2>
+                    <p>On Earth, power is expensive, land is limited, and cooling is a constant battle.</p>
+                    <p>In space, the rules change. Unlimited solar energy. Natural cold. No land constraints.</p>
+                    <p>Built for the scale artificial intelligence, sovereign data, and human ambition now demand.</p>
+                    <p className="perspective-emphasis">This isn’t theory. It’s already happening.</p>
+                  </div>
 
                   <div className="perspective-actions">
                     <a className="primary-button" href="/space-data-centres-perspective.pdf" target="_blank" rel="noreferrer">
-                      Read our research paper <ArrowRight size={14} />
+                      Read the research paper and see why the future is in orbit <ArrowRight size={14} />
                     </a>
-                    <p className="perspective-supporting-copy">
-                      Explore the infrastructure thesis behind Space Data Centres and the future of orbital compute.
-                    </p>
                   </div>
                 </div>
               </FadeInSection>
@@ -358,12 +358,12 @@ export default function App() {
           </div>
         </section>
 
-        <section id="why-red-dot" className="content-section chapter-section chapter-whyus">
+        <section id="advantage" className="content-section chapter-section chapter-whyus">
           <FadeInSection>
             <SectionHeading
-              eyebrow="WHY RED DOT"
-              title="Why Red Dot Space is positioned to <span class='title-accent'>build this layer.</span>"
-              body="Red Dot Space brings together compute operations thinking, Singapore-based neutrality, and ecosystem collaboration to explore a practical path toward orbital cloud infrastructure."
+              eyebrow="ADVANTAGE"
+              title="Built to deliver <span class='title-accent'>space compute infrastructure.</span>"
+              body="Red Dot Space brings together compute operations expertise, Singapore-based neutrality, and ecosystem collaboration to explore a practical path toward orbital cloud infrastructure."
             />
           </FadeInSection>
 
@@ -391,7 +391,7 @@ export default function App() {
                 <div className="eyebrow">Contact</div>
                 <h2>Let’s talk about orbital compute.</h2>
                 <p>
-                  For partnerships, technical collaboration, research paper access, or investor conversations, we would be happy to start a conversation.
+                  For partnerships, technical collaboration, research paper access, or investor enquiries, we would be happy to connect.
                 </p>
                 <a className="primary-button" href={`mailto:${contactEmail}`}>
                   Talk to us <ArrowRight size={16} />
@@ -409,11 +409,6 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="contact-chip-row" aria-label="Contact topics">
-                {contactChips.map((chip) => (
-                  <span key={chip} className="contact-chip">{chip}</span>
-                ))}
-              </div>
             </div>
           </FadeInSection>
         </section>

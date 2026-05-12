@@ -53,8 +53,13 @@ select {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #fff;
+  background: rgba(122, 166, 255, 0.28);
+  color: #f6f3ee;
+}
+
+::-moz-selection {
+  background: rgba(122, 166, 255, 0.28);
+  color: #f6f3ee;
 }
 
 ::-webkit-scrollbar {
@@ -283,7 +288,7 @@ select {
   background:
     linear-gradient(90deg, rgba(4, 8, 17, 0.88) 0%, rgba(4, 8, 17, 0.68) 34%, rgba(4, 8, 17, 0.5) 56%, rgba(4, 8, 17, 0.76) 100%),
     linear-gradient(180deg, rgba(4, 8, 17, 0.1), rgba(4, 8, 17, 0.22)),
-    url('/hero-orbit-earth.png');
+    url('/hero-purpose-satellite.png');
   background-size: cover;
   background-position: center right;
 }
@@ -723,6 +728,7 @@ select {
 
 .chapter-section {
   position: relative;
+  scroll-margin-top: 110px;
 }
 
 .chapter-section::before {
@@ -1058,8 +1064,8 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 9px;
+  margin-bottom: 18px;
 }
 
 .layer-label-group {
@@ -1120,8 +1126,8 @@ select {
 
 .platform-card .build-visual {
   height: 158px;
-  margin-top: 10px;
-  margin-bottom: 22px;
+  margin-top: 12px;
+  margin-bottom: 24px;
 }
 
 .build-visual-image,
@@ -1165,12 +1171,13 @@ select {
 .platform-card-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   flex: 1;
 }
 
 .platform-card-body h3 {
   margin: 0;
+  line-height: 1.08;
 }
 
 .platform-card-body p {
@@ -1605,20 +1612,20 @@ select {
 .perspective-spotlight-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px;
+  gap: 44px;
   align-items: stretch;
 }
 
 .perspective-spotlight-section {
   width: 100%;
-  margin: 36px 0 0;
+  margin: 68px 0 0;
   padding: 0;
   position: relative;
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(4, 8, 17, 0.94) 0%, rgba(4, 8, 17, 0.84) 38%, rgba(4, 8, 17, 0.72) 60%, rgba(4, 8, 17, 0.9) 100%),
     linear-gradient(180deg, rgba(4, 8, 17, 0.14), rgba(4, 8, 17, 0.24)),
-    url('/perspective-paper-cover.png');
+    url('/perspective-paper-cover-v2.png');
   background-size: cover;
   background-position: center right;
 }
@@ -1640,21 +1647,40 @@ select {
 .perspective-spotlight-inner {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 40px 0 44px;
+  padding: 68px 0 72px;
   position: relative;
   z-index: 1;
 }
 
+.perspective-copy-block {
+  max-width: 1120px;
+}
+
 .chapter-perspective-spotlight .section-heading {
-  max-width: 760px;
+  max-width: 1180px;
 }
 
 .chapter-perspective-spotlight .section-heading h2 {
-  font-size: clamp(2.2rem, 4.2vw, 3.7rem);
+  font-size: clamp(2.5rem, 4.8vw, 4.2rem);
 }
 
 .chapter-perspective-spotlight .section-heading p {
-  max-width: 56ch;
+  max-width: 92ch;
+}
+
+.perspective-thesis-heading p + p {
+  margin-top: 20px;
+}
+
+.perspective-emphasis {
+  display: block;
+  margin-top: 36px;
+  padding-top: 28px;
+  color: rgba(246, 243, 238, 0.96);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  line-height: 1.5;
 }
 
 .perspective-actions {
@@ -1662,7 +1688,7 @@ select {
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .perspective-supporting-copy {
@@ -1674,6 +1700,7 @@ select {
 
 .platform-card-body p {
   font-size: 0.98rem;
+  color: rgba(214, 225, 245, 0.76);
 }
 
 .contact-section {
@@ -1726,25 +1753,6 @@ select {
 
 .contact-meta a {
   color: var(--color-text);
-}
-
-.contact-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  grid-column: 1 / -1;
-  margin-top: 18px;
-}
-
-.contact-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(122, 166, 255, 0.06);
-  border: 1px solid rgba(163, 189, 255, 0.12);
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
 }
 
 @media (max-width: 1100px) {
@@ -2019,7 +2027,6 @@ select {
 }
 
 @media (max-width: 560px) {
-  .hero-section,
   .content-section,
   .stat-band {
     width: min(1200px, calc(100% - 28px));
@@ -2034,6 +2041,10 @@ select {
   }
 
   .content-section {
+    scroll-margin-top: 130px;
+  }
+
+  .chapter-section {
     scroll-margin-top: 130px;
   }
 
