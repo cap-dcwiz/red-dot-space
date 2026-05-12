@@ -155,13 +155,15 @@ select {
 
 .wordmark {
   text-decoration: none;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  white-space: nowrap;
-  display: inline-block;
-  padding-left: 2px;
+  display: inline-flex;
+  align-items: center;
   overflow: visible;
+}
+
+.wordmark-logo {
+  display: block;
+  width: auto;
+  height: 40px;
 }
 
 .site-nav {
@@ -1905,6 +1907,10 @@ select {
     padding-inline: 16px;
   }
 
+  .wordmark-logo {
+    height: 32px;
+  }
+
   .site-nav {
     display: none;
   }
@@ -2038,6 +2044,10 @@ select {
 
   .site-header.is-condensed {
     padding-block: 14px;
+  }
+
+  .wordmark-logo {
+    height: 26px;
   }
 
   .content-section {
