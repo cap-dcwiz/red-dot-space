@@ -6,18 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "build:guideline": "node ./generate-guideline-pptx.mjs",
-    "build:color-guide": "node ./generate-color-guide-pptx.mjs",
-    "build:wordmark-slide": "node ./generate-wordmark-slide-pptx.mjs",
-    "build:space-wordmarks": "node ./generate-space-wordmark-options-pptx.mjs",
-    "build:space-logo-directions": "node ./generate-space-logo-directions-pptx.mjs",
-    "build:space-logo-2": "node ./generate-space-logo-design-2-pptx.mjs"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.487.0",
     "motion": "^12.0.0",
-    "pptxgenjs": "^4.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
