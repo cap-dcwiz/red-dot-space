@@ -31,7 +31,7 @@ const missionCards = [
 const platformCards = [
   {
     layer: 'LAYER 1',
-    descriptor: 'INFRASTRUCTURE · ORBITAL COMPUTE NODE',
+    descriptor: 'SOLO NODE',
     number: '01',
     title: 'Node Solo',
     text: 'Standalone orbital compute payload for single-satellite deployment, designed for on-orbit data preprocessing and edge inference.',
@@ -42,7 +42,7 @@ const platformCards = [
   },
   {
     layer: 'LAYER 1',
-    descriptor: 'INFRASTRUCTURE · ORBITAL COMPUTE NODE',
+    descriptor: 'CONSTELLATION NODE',
     number: '02',
     title: 'Node Constellation',
     text: 'Networked compute architecture designed to scale capacity across multiple orbital nodes and satellite operators.',
