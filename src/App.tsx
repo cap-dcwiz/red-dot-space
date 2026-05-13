@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, Layers3, Menu, Shield, X, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const navLinks = [
   { href: '#mission', label: 'Mission' },
   { href: '#purpose', label: 'Purpose' },
@@ -38,7 +40,7 @@ const platformCards = [
     points: ['Space-ready compute hardware', 'On-orbit preprocessing and inference'],
     visual: 'infrastructure',
     visualLabel: 'Single-node payload',
-    image: '/platform-node-solo.png',
+    image: asset('platform-node-solo.png'),
   },
   {
     layer: 'LAYER 1',
@@ -49,7 +51,7 @@ const platformCards = [
     points: ['Distributed processing', 'Workload balancing across nodes'],
     visual: 'infrastructure',
     visualLabel: 'Distributed capacity',
-    image: '/platform-node-constellation.png',
+    image: asset('platform-node-constellation.png'),
   },
   {
     layer: 'LAYER 2',
@@ -60,7 +62,7 @@ const platformCards = [
     points: ['Power-aware workload planning', 'Fleet health and predictive operations'],
     visual: 'ops',
     visualLabel: 'Operations intelligence',
-    image: '/platform-ops-engine.png',
+    image: asset('platform-ops-engine.png'),
   },
   {
     layer: 'LAYER 3',
@@ -71,7 +73,7 @@ const platformCards = [
     points: ['Cloud-style access to orbital compute', 'Support for sovereign, dedicated, and hybrid orbital-terrestrial workloads'],
     visual: 'cloud',
     visualLabel: 'Managed cloud layer',
-    image: '/platform-cloud.png',
+    image: asset('platform-cloud.png'),
   },
 ]
 
@@ -172,7 +174,7 @@ export default function App() {
 
       <header className={`site-header${headerCondensed ? ' is-condensed' : ''}`}>
         <a className="wordmark" href="#top" aria-label="Red Dot Space home">
-          <img src="/red-dot-space-logo-horizontal-dark.svg" alt="Red Dot Space" className="wordmark-logo" />
+          <img src={asset('red-dot-space-logo-horizontal-dark.svg')} alt="Red Dot Space" className="wordmark-logo" />
         </a>
 
         <nav className="site-nav" aria-label="Primary">
@@ -304,7 +306,7 @@ export default function App() {
                   </div>
 
                   <div className="perspective-actions">
-                    <a className="primary-button" href="/space-data-centres-perspective.pdf" target="_blank" rel="noreferrer">
+                    <a className="primary-button" href={asset('space-data-centres-perspective.pdf')} target="_blank" rel="noreferrer">
                       Read the research paper and see why the future is in orbit <ArrowRight size={14} />
                     </a>
                   </div>

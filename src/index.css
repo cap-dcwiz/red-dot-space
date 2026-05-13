@@ -290,7 +290,7 @@ select {
   background:
     linear-gradient(90deg, rgba(4, 8, 17, 0.42) 0%, rgba(4, 8, 17, 0.26) 34%, rgba(4, 8, 17, 0.1) 56%, rgba(4, 8, 17, 0.3) 100%),
     linear-gradient(180deg, rgba(4, 8, 17, 0.01), rgba(4, 8, 17, 0.05)),
-    url('/hero-purpose-satellite.png');
+    var(--asset-hero-satellite);
   background-size: cover;
   background-position: center right;
 }
@@ -639,7 +639,7 @@ select {
   width: min(70vw, 450px);
   aspect-ratio: 0.9;
   border-radius: 48% 52% 50% 50% / 50% 46% 54% 50%;
-  background-image: url('/earth.jpg');
+  background-image: var(--asset-earth);
   background-size: cover;
   background-position: center;
   box-shadow:
@@ -1628,7 +1628,7 @@ select {
   background:
     linear-gradient(90deg, rgba(4, 8, 17, 0.5) 0%, rgba(4, 8, 17, 0.36) 38%, rgba(4, 8, 17, 0.24) 60%, rgba(4, 8, 17, 0.44) 100%),
     linear-gradient(180deg, rgba(4, 8, 17, 0.01), rgba(4, 8, 17, 0.05)),
-    url('/perspective-paper-cover-v2.png');
+    var(--asset-perspective-cover);
   background-size: cover;
   background-position: center right;
 }
