@@ -92,7 +92,10 @@ const whyRedDotCards = [
   },
 ]
 
-const contactEmail = 'invest@reddot.space'
+const contactAddress = {
+  line1: 'Nanyang Technological University',
+  line2: '50 Nanyang Ave, Singapore 639798',
+}
 
 function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
@@ -257,7 +260,7 @@ export default function App() {
                 <a className="primary-button" href="#platform">
                   Explore the platform
                 </a>
-                <a className="secondary-link" href={`mailto:${contactEmail}`}>
+                <a className="secondary-link" href="#contact">
                   Start a conversation
                   <ArrowRight size={16} />
                 </a>
@@ -395,19 +398,16 @@ export default function App() {
                 <p>
                   For partnerships, technical collaboration, research paper access, or investor enquiries, we would be happy to connect.
                 </p>
-                <a className="primary-button" href={`mailto:${contactEmail}`}>
-                  Talk to us <ArrowRight size={16} />
-                </a>
               </div>
 
               <div className="contact-meta">
                 <div>
-                  <span className="meta-label">Email</span>
-                  <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-                </div>
-                <div>
-                  <span className="meta-label">Base</span>
-                  <span>Singapore</span>
+                  <span className="meta-label">Address</span>
+                  <span>
+                    {contactAddress.line1}
+                    <br />
+                    {contactAddress.line2}
+                  </span>
                 </div>
               </div>
 
