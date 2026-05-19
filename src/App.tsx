@@ -177,7 +177,7 @@ export default function App() {
 
       <header className={`site-header${headerCondensed ? ' is-condensed' : ''}`}>
         <a className="wordmark" href="#top" aria-label="Red Dot Space home">
-          <img src={asset('red-dot-space-logo-horizontal-dark.svg')} alt="Red Dot Space" className="wordmark-logo" />
+          <img src={asset('red-dot-space-logo.png')} alt="Red Dot Space" className="wordmark-logo" />
         </a>
 
         <nav className="site-nav" aria-label="Primary">

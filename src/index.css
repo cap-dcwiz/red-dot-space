@@ -163,7 +163,7 @@ select {
 .wordmark-logo {
   display: block;
   width: auto;
-  height: 40px;
+  height: 64px;
 }
 
 .site-nav {
@@ -1909,7 +1909,7 @@ select {
   }
 
   .wordmark-logo {
-    height: 32px;
+    height: 52px;
   }
 
   .site-nav {
@@ -2072,7 +2072,7 @@ select {
   }
 
   .wordmark-logo {
-    height: 26px;
+    height: 44px;
   }
 
   .content-section {
