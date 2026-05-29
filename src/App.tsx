@@ -2,7 +2,17 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, Layers3, Menu, Shield, X, Zap } from 'lucide-react'
 import { motion } from 'motion/react'
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
+function trackEvent(name: string, params: Record<string, string>) {
+  window.gtag?.('event', name, params)
+}
 
 const navLinks = [
   { href: '#mission', label: 'Mission' },
@@ -188,7 +198,7 @@ export default function App() {
           ))}
         </nav>
 
-        <a className="header-cta" href="#contact">
+        <a className="header-cta" href="#contact" onClick={() => trackEvent('contact_intent', { location: 'header' })}>
           Talk to us
         </a>
 
@@ -221,9 +231,16 @@ export default function App() {
                 </a>
               ))}
             </nav>
-            <a className="mobile-nav-cta" href="#contact" onClick={() => setMobileMenuOpen(false)}>
-              Talk to us
-            </a>
+             <a
+               className="mobile-nav-cta"
+               href="#contact"
+               onClick={() => {
+                 trackEvent('contact_intent', { location: 'mobile_menu' })
+                 setMobileMenuOpen(false)
+               }}
+             >
+               Talk to us
+             </a>
           </div>
         </div>
       )}
@@ -257,10 +274,10 @@ export default function App() {
               </motion.p>
 
               <motion.div className="hero-actions" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay: 0.3 }}>
-                <a className="primary-button" href="#platform">
+                <a className="primary-button" href="#platform" onClick={() => trackEvent('platform_interest', { location: 'hero' })}>
                   Explore the platform
                 </a>
-                <a className="secondary-link" href="#contact">
+                <a className="secondary-link" href="#contact" onClick={() => trackEvent('contact_intent', { location: 'hero' })}>
                   Start a conversation
                   <ArrowRight size={16} />
                 </a>
@@ -309,9 +326,15 @@ export default function App() {
                   </div>
 
                   <div className="perspective-actions">
-                    <a className="primary-button" href={asset('space-data-centres-perspective.pdf')} target="_blank" rel="noreferrer">
-                      Read the research paper and see why the future is in orbit <ArrowRight size={14} />
-                    </a>
+                     <a
+                       className="primary-button"
+                       href={asset('space-data-centres-perspective.pdf')}
+                       target="_blank"
+                       rel="noreferrer"
+                       onClick={() => trackEvent('research_paper_open', { location: 'purpose' })}
+                     >
+                       Read the research paper and see why the future is in orbit <ArrowRight size={14} />
+                     </a>
                   </div>
                 </div>
               </FadeInSection>
